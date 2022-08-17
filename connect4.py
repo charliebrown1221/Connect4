@@ -2,6 +2,8 @@ from turtle import Screen, width
 import numpy as np
 import pygame
 import sys
+
+BLUE =(0,0,255)
 ROW_COUNT = 6
 COLUMN_COUNT= 7
 
@@ -44,7 +46,9 @@ def winning_move(board, piece):
                return True 
 
 def draw_board(board):
- pass
+   for c in range(COLUMN_COUNT):
+    for r in range(ROW_COUNT):
+        pygame.draw.rect(screen,BLUE,(c*SQUARESIZE,r*SQUARESIZE,SQUARESIZE,SQUARESIZE))
 
 board = create_board()
 print_board(board)
@@ -58,7 +62,9 @@ SQUARESIZE = 100
 width =COLUMN_COUNT * SQUARESIZE
 height = (ROW_COUNT+1) * SQUARESIZE
 size=(width, height)
-Screen = pygame.display.set_mode(size)
+screen = pygame.display.set_mode(size)
+draw_board(board)
+pygame.display.update()
 
 
 
